@@ -37,40 +37,10 @@
 # print(count)
 
 # Task 1.1.9
-import time
-# def get_j(n):
-#     res = 0
-#     for j in range(2 * n):
-#         res += j
-#     return res
-
-# n = int(input())
-# t_start = time.time()
-# result = 0
-# j = get_j(n)
-# for i in range(n):
-#     result += j + 2 * n * i
-# t_stop = time.time()
-# t = t_stop - t_start
-# print(result)
-# print(t)
-
-# n = int(input())
-
-# t1 = time.time()
-# # s = 0
-# # for i in range(n):
-# #     s += i
-# s = sum(range(n))
-# t2 = time.time()
-# print(s)
-# print(t2 - t1)
-
+# Для отрезка от a до b включительно формула:(a + b) * (b - a + 1) // 2
+# Work solution!!!!
 n = int(input())
-tb = time.time()
-i = sum(range(n))
-j = i + sum(range(n, 2 * n))
+i = (n - 1) * n // 2
+j = (2 * n - 1) * n
 result = n * (j + 2 * i)
-te = time.time()
 print(result)
-print(te - tb)
