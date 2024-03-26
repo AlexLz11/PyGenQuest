@@ -49,7 +49,9 @@
 import time
 s = int(input())
 tb = time.time()
-n = len([i for i in range(100) if sum(map(int, str(i))) == s])
+count = 0
+for i in range(1000000000000):
+    pass
 te = time.time()
-print(n)
+print(count)
 print(te - tb)
