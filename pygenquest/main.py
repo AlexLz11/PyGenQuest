@@ -39,8 +39,17 @@
 # Task 1.1.9
 # Для отрезка от a до b включительно формула:(a + b) * (b - a + 1) // 2
 # Work solution!!!!
-n = int(input())
-i = (n - 1) * n // 2
-j = (2 * n - 1) * n
-result = n * (j + 2 * i)
-print(result)
+# n = int(input())
+# i = (n - 1) * n // 2
+# j = (2 * n - 1) * n
+# result = n * (j + 2 * i)
+# print(result)
+
+# Task 1.1.10
+import time
+s = int(input())
+tb = time.time()
+n = len([i for i in range(100) if sum(map(int, str(i))) == s])
+te = time.time()
+print(n)
+print(te - tb)
