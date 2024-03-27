@@ -46,12 +46,57 @@
 # print(result)
 
 # Task 1.1.10
+
 import time
+# s = int(input())
+# tb = time.time()
+# count = 0
+# for i in range(1000000000000):
+#     pass
+# te = time.time()
+# print(count)
+# print(te - tb)
+
+# s = int(input())
+# tb = time.time()
+# num = [0] * 12
+# if s < 10:
+#     brd = s
+#     num[0] = brd
+# else:
+#     brd = 9
+#     n = '9' * (s // brd) + str(s % brd)
+#     num[:len(n)] = [int(i) for i in n]
+# count = 1
+# while True:
+#     for i in range(1, 12):
+#         if num[i] < brd and any(num[:i]):
+#             num[i] += 1
+#             num[:i] = sorted(num[:i], reverse=True)
+#             for i in range(i - 1, -1, -1):
+#                 if num[i] > 0:
+#                     num[i] -= 1
+#                     break
+#             count += 1
+#             break
+#     else:
+#         break
+# te = time.time()
+# print(count)
+# print(te - tb)
+
+# Решение Chat GPT:
+# Числовой промежуток [a,b]: a = 0, b = 1.000.000.000.000 (10^12)
+#  F(k, m, n) = n! * P(k - m, n - 1)
+# m - количество цифр в числе a, n - количество цифр в числе b
+# F(k, m, n) - количество чисел с суммой цифр k в диапазоне [a, b]
+# P(k, n) - количество способов разложить число k в сумму n неотрицательных целых чисел
+# P(k, n) = (k + n - 1)! / (k! * (n - 1)!)
+from math import factorial as fact
 s = int(input())
-tb = time.time()
-count = 0
-for i in range(1000000000000):
-    pass
-te = time.time()
-print(count)
-print(te - tb)
+m = 1
+n = 12
+# pkn = fact(s + n - 1 - m) / (fact(s) * fact(n - 1))
+pkn = 1
+f = fact(n) * pkn
+print(f)
