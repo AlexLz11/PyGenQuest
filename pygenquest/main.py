@@ -120,12 +120,12 @@ from math import factorial as fact
 s = int(input()) # например n (у нас это s) = 10, при k = 3, результат должен быть 66
 k = 12
 qts = fact(s + k - 1) / (fact(k - 1) * fact(s))
-qt1 = fact(1 + k - 1) / (fact(k - 1) * fact(1))
-qt3 = fact(3 + k - 1) / (fact(k - 1) * fact(3))
-# qt9 = fact(9 + k - 1) / (fact(k - 1) * fact(9))
+# qt1 = fact(1 + k - 1) / (fact(k - 1) * fact(1))
+# qt3 = fact(3 + k - 1) / (fact(k - 1) * fact(3))
+# # qt9 = fact(9 + k - 1) / (fact(k - 1) * fact(9))
 # qt10 = fact(10 + k - 1) / (fact(k - 1) * fact(10)) - qt1
-qt13 = fact(13 + k - 1) / (fact(k - 1) * fact(13)) - qt1 * qt3
-d = s - 9
-qtd = fact(d - 1 + k - 1) / (fact(k - 1) * fact(d - 1))
-qt = qts - qt1 * qt13
-print(qt)
+# # qt13 = fact(13 + k - 1) / (fact(k - 1) * fact(13)) - qt1 * qt3
+# d = s - 9
+# qtd = fact(d - 1 + k - 1) / (fact(k - 1) * fact(d - 1))
+# qt = qts - qt1 * qt10
+print(qts)
