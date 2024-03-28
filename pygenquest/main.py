@@ -47,15 +47,7 @@
 
 # Task 1.1.10
 
-import time
-# s = int(input())
-# tb = time.time()
-# count = 0
-# for i in range(1000000000000):
-#     pass
-# te = time.time()
-# print(count)
-# print(te - tb)
+# import time
 
 # s = int(input())
 # tb = time.time()
@@ -86,17 +78,54 @@ import time
 # print(te - tb)
 
 # Решение Chat GPT:
-# Числовой промежуток [a,b]: a = 0, b = 1.000.000.000.000 (10^12)
+# Числовой промежуток [a,b]: a = 0, b = 10^12
 #  F(k, m, n) = n! * P(k - m, n - 1)
 # m - количество цифр в числе a, n - количество цифр в числе b
 # F(k, m, n) - количество чисел с суммой цифр k в диапазоне [a, b]
 # P(k, n) - количество способов разложить число k в сумму n неотрицательных целых чисел
 # P(k, n) = (k + n - 1)! / (k! * (n - 1)!)
+# from math import factorial as fact
+# s = int(input())
+# # m = 1
+# n = 12
+# # pkn = fact(s + n - 1 - m) / (fact(s) * fact(n - 1))
+# pkn = 1
+# f = fact(n) * pkn
+# print(f)
+
+# Формула сочетаний гласит: C(n + k — 1, k — 1), где n — сумма цифр, k — количество слагаемых.
+# Например, мы хотим найти количество трехзначных чисел с суммой цифр, равной 10
+# C(a, b) = a! / (b! * (a - b)!), где a = n + k - 1; b = k - 1
+# В нашем примере количество чисел будет равно C(10 + 3 — 1, 3 — 1) = C(12, 2) = 66.
+# 
+# from math import factorial as fact
+# s = int(input()) # например n (у нас это s) = 10, при k = 3, результат должен быть 66
+# k = 12
+# qt = fact(s + k - 1) / (fact(k - 1) * fact(s))
+# print(qt)
+#
+# ***********************************************************
+#
+# F(s, 1, 12) = 12! * P(s - 1, 11)
+# P(s - 1, 11) = (s - 1)! / (11! * (s - 1 - 11))!)
+# from math import factorial as fact
+# s = int(input())
+# p = fact(s - 1) / (fact(11) * fact(s - 12))
+# qt = fact(12) * p
+# print(qt)
+#
+# ***********************************************************
+#
 from math import factorial as fact
-s = int(input())
-m = 1
-n = 12
-# pkn = fact(s + n - 1 - m) / (fact(s) * fact(n - 1))
-pkn = 1
-f = fact(n) * pkn
-print(f)
+s = int(input()) # например n (у нас это s) = 10, при k = 3, результат должен быть 66
+k = 12
+qts = fact(s + k - 1) / (fact(k - 1) * fact(s))
+qt1 = fact(1 + k - 1) / (fact(k - 1) * fact(1))
+qt3 = fact(3 + k - 1) / (fact(k - 1) * fact(3))
+# qt9 = fact(9 + k - 1) / (fact(k - 1) * fact(9))
+# qt10 = fact(10 + k - 1) / (fact(k - 1) * fact(10)) - qt1
+qt13 = fact(13 + k - 1) / (fact(k - 1) * fact(13)) - qt1 * qt3
+d = s - 9
+qtd = fact(d - 1 + k - 1) / (fact(k - 1) * fact(d - 1))
+qt = qts - qt1 * qt13
+print(qt)
