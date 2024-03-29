@@ -47,6 +47,7 @@
 
 # Task 1.1.10
 
+# РЕШЕНИЕ № 1. Рабочее, но работает медленно
 # import time
 
 # s = int(input())
@@ -77,22 +78,8 @@
 # print(count)
 # print(te - tb)
 
-# Решение Chat GPT:
-# Числовой промежуток [a,b]: a = 0, b = 10^12
-#  F(k, m, n) = n! * P(k - m, n - 1)
-# m - количество цифр в числе a, n - количество цифр в числе b
-# F(k, m, n) - количество чисел с суммой цифр k в диапазоне [a, b]
-# P(k, n) - количество способов разложить число k в сумму n неотрицательных целых чисел
-# P(k, n) = (k + n - 1)! / (k! * (n - 1)!)
-# from math import factorial as fact
-# s = int(input())
-# # m = 1
-# n = 12
-# # pkn = fact(s + n - 1 - m) / (fact(s) * fact(n - 1))
-# pkn = 1
-# f = fact(n) * pkn
-# print(f)
-
+# ************************************************************************************
+# ТЕОРИЯ ИЗ КОМБИНАТОРИКИ:
 # Формула сочетаний гласит: C(n + k — 1, k — 1), где n — сумма цифр, k — количество слагаемых.
 # Например, мы хотим найти количество трехзначных чисел с суммой цифр, равной 10
 # C(a, b) = a! / (b! * (a - b)!), где a = n + k - 1; b = k - 1
@@ -104,28 +91,47 @@
 # qt = fact(s + k - 1) / (fact(k - 1) * fact(s))
 # print(qt)
 #
-# ***********************************************************
+# ************************************************************************************
 #
-# F(s, 1, 12) = 12! * P(s - 1, 11)
-# P(s - 1, 11) = (s - 1)! / (11! * (s - 1 - 11))!)
+# РЕШЕНИЕ № 2. Рабочее, быстрое (немного не доработан алгоритм, начиня со 100 дает не врный ответ, поэтому имеется костыль)
 # from math import factorial as fact
+
+# def qts(s):
+#     k = 12
+#     lvs = s // 10
+#     qti = int(fact(s + k - 1) / (fact(k - 1) * fact(s)))
+#     if lvs == 0:
+#         return qti
+#     qtm = 0
+#     for i in range(1, lvs + 1):
+#         s -= 10
+#         qtm += qts(i) * qts(s)
+#     return qti - qtm
+
 # s = int(input())
-# p = fact(s - 1) / (fact(11) * fact(s - 12))
-# qt = fact(12) * p
+# if s > 108:
+#     qt = 0
+# else:
+#     s = 108 - s if s > 99 else s
+#     qt = qts(s)
 # print(qt)
-#
-# ***********************************************************
-#
-from math import factorial as fact
-s = int(input()) # например n (у нас это s) = 10, при k = 3, результат должен быть 66
-k = 12
-qts = fact(s + k - 1) / (fact(k - 1) * fact(s))
-# qt1 = fact(1 + k - 1) / (fact(k - 1) * fact(1))
-# qt3 = fact(3 + k - 1) / (fact(k - 1) * fact(3))
-# # qt9 = fact(9 + k - 1) / (fact(k - 1) * fact(9))
-# qt10 = fact(10 + k - 1) / (fact(k - 1) * fact(10)) - qt1
-# # qt13 = fact(13 + k - 1) / (fact(k - 1) * fact(13)) - qt1 * qt3
-# d = s - 9
-# qtd = fact(d - 1 + k - 1) / (fact(k - 1) * fact(d - 1))
-# qt = qts - qt1 * qt10
-print(qts)
+
+# Task 1.1.12
+from math import lcm
+
+n = int(input())
+qt2 = n // 2
+qt3 = n // 3
+qt5 = n // 5
+qt23 = n // lcm(2, 3)
+qt25 = n // lcm(2, 5)
+qt35 = n // lcm(3, 5)
+qt235 = n // lcm(2, 3, 5)
+qt23_nc = qt23 - qt235
+qt25_nc = qt25 - qt235
+qt35_nc = qt35 - qt235
+qt2_nc = qt2 - qt23_nc - qt25_nc - qt235
+qt3_nc = qt3 - qt23_nc - qt35_nc - qt235
+qt5_nc = qt5 - qt25_nc - qt35_nc - qt235
+result = n - qt2_nc - qt3_nc - qt5_nc - qt23_nc - qt25_nc - qt35_nc - qt235
+print(result)
