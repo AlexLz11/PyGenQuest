@@ -117,21 +117,31 @@
 # print(qt)
 
 # Task 1.1.12
-from math import lcm
+# from math import lcm
 
-n = int(input())
-qt2 = n // 2
-qt3 = n // 3
-qt5 = n // 5
-qt23 = n // lcm(2, 3)
-qt25 = n // lcm(2, 5)
-qt35 = n // lcm(3, 5)
-qt235 = n // lcm(2, 3, 5)
-qt23_nc = qt23 - qt235
-qt25_nc = qt25 - qt235
-qt35_nc = qt35 - qt235
-qt2_nc = qt2 - qt23_nc - qt25_nc - qt235
-qt3_nc = qt3 - qt23_nc - qt35_nc - qt235
-qt5_nc = qt5 - qt25_nc - qt35_nc - qt235
-result = n - qt2_nc - qt3_nc - qt5_nc - qt23_nc - qt25_nc - qt35_nc - qt235
-print(result)
+# n = int(input())
+# qt2 = n // 2
+# qt3 = n // 3
+# qt5 = n // 5
+# qt23 = n // lcm(2, 3)
+# qt25 = n // lcm(2, 5)
+# qt35 = n // lcm(3, 5)
+# qt235 = n // lcm(2, 3, 5)
+# qt23_nc = qt23 - qt235
+# qt25_nc = qt25 - qt235
+# qt35_nc = qt35 - qt235
+# qt2_nc = qt2 - qt23_nc - qt25_nc - qt235
+# qt3_nc = qt3 - qt23_nc - qt35_nc - qt235
+# qt5_nc = qt5 - qt25_nc - qt35_nc - qt235
+# result = n - qt2_nc - qt3_nc - qt5_nc - qt23_nc - qt25_nc - qt35_nc - qt235
+# print(result)
+import inspect
+
+def magic(x, y, z):
+    a = 2
+    b = 3
+    c = 4
+    return a*x + b*y + c*z
+
+source_code = inspect.getsource(magic)
+print(source_code)
