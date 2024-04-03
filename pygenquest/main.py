@@ -135,13 +135,21 @@
 # qt5_nc = qt5 - qt25_nc - qt35_nc - qt235
 # result = n - qt2_nc - qt3_nc - qt5_nc - qt23_nc - qt25_nc - qt35_nc - qt235
 # print(result)
-import inspect
+# import inspect
 
-def magic(x, y, z):
-    a = 2
-    b = 3
-    c = 4
-    return a*x + b*y + c*z
+# def magic(x, y, z):
+#     a = 2
+#     b = 3
+#     c = 4
+#     return a*x + b*y + c*z
 
-source_code = inspect.getsource(magic)
-print(source_code)
+# source_code = inspect.getsource(magic)
+# print(source_code)
+
+text = 'ЗЖ АЮДЮЖФВ, АДЗВ Б ЗРЮЖХ ЖЮ ДЧЪБЛ ЙЗЯЭЮКЛЫЗ'
+alph = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+for i in range(33):
+    al = alph[i:] + alph[:i]
+    dc = dict(zip(alph, al))
+    tx = ''.join([dc[j] if j in alph else j for j in text])
+    print(tx)
